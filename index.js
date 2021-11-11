@@ -10,13 +10,13 @@ const movieRouter = require("./routers/routes/moviesRoute");
 const podcastRouter = require("./routers/routes/podcastRoute");
 const musicRouter = require("./routers/routes/musicRoute");
 const musicVideoRouter = require("./routers/routes/musicVideoRoute");
-
 const audiobookRouter = require("./routers/routes/audiobookRoute");
 const tvShowRouter = require("./routers/routes/tvShowRoute");
 const softwareRouter = require("./routers/routes/softwareRoute");
 const ebookRouter = require("./routers/routes/ebookRoute");
 const allRouter = require("./routers/routes/allRoute");
 const userRouter = require("./routers/routes/userRoute");
+const searchRouter = require("./routers/routes/searchRoute");
 
 const app = express();
 
@@ -81,19 +81,25 @@ const userMiddleware = (req, res, next) => {
   next();
 };
 
+const searchMiddleware = (req, res, next) => {
+  console.log("search");
+  next();
+};
+
 //third party middleware
 
 //routers level middleware
 app.use("/movies", movieMiddleware, movieRouter);
 app.use("/podcast", podcastMiddleware, podcastRouter);
 app.use("/music", musicMiddleware, musicRouter);
-app.use("/musicVideo", musicVideoMiddleware, musicVideoRouter); // audiobook,tvShow,software,ebook
+app.use("/musicVideo", musicVideoMiddleware, musicVideoRouter);
 app.use("/audiobook", audiobookMiddleware, audiobookRouter);
 app.use("/tvShow", tvShowMiddleware, tvShowRouter);
 app.use("/software", softwareMiddleware, softwareRouter);
 app.use("/ebook", ebookMiddleware, ebookRouter);
 app.use("/all", allMiddleware, allRouter);
 app.use("/user", userMiddleware, userRouter);
+app.use("/search", searchMiddleware, searchRouter);
 
 const PORT = process.env.PORT || 4000;
 
