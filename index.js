@@ -2,6 +2,7 @@ const express = require("express");
 const morgan = require("morgan");
 const dotenv = require("dotenv");
 const cors = require("cors");
+const helmet = require("helmet");
 
 dotenv.config();
 
@@ -28,7 +29,7 @@ const appMiddleware = (req, res, next) => {
 };
 app.use(appMiddleware);
 app.use(cors());
-
+app.use(helmet());
 app.use(morgan("dev"));
 
 // router level middleware
