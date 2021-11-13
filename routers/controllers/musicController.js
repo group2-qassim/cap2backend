@@ -22,7 +22,7 @@ const getAllMusic = (req, res) => {
 };
 const getMusicById = (req, res) => {
   const id = req.params.id;
-  const found = music.data.results.find((music) => music.collectionId == id);
+  const found = music.data.results.find((music) => music.trackId == id);
 
   res.status(200).json(found);
 };

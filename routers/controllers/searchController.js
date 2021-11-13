@@ -2,12 +2,11 @@ const fs = require("fs");
 const axios = require("axios");
 
 const getSearch = async (req, res, next) => {
-  const { str, catg } = req.body;
+  const str = req.params.str;
+  const catg = req.params.catg;
   try {
     axios
-      .get(
-        `https://itunes.apple.com/search?term=${str}&media=${catg}&callback=wsSearchCB`
-      )
+      .get(`https://itunes.apple.com/search?term=${str}&media=${catg}`)
       .then((data) => {
         //console.log(data.data);
 

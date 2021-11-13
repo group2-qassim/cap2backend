@@ -22,7 +22,7 @@ const getAllSoftware = (req, res) => {
 };
 const getSoftwareById = (req, res) => {
   const id = req.params.id;
-  const found = software.data.results.find((item) => item.collectionId == id);
+  const found = software.data.results.find((item) => item.trackId == id);
 
   res.status(200).json(found);
 };

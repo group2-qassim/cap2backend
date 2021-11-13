@@ -20,7 +20,7 @@ const getAll = (req, res) => {
 };
 const getAllById = (req, res) => {
   const id = req.params.id;
-  const found = all.data.results.find((item) => item.collectionId == id);
+  const found = all.data.results.find((item) => item.trackId == id);
 
   res.status(200).json(found);
 };

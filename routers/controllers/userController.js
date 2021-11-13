@@ -3,6 +3,7 @@ const ax = require("axios");
 
 let users = [];
 let fav = [];
+let current = {};
 
 fs.readFile("./db/user.json", (err, data) => {
   if (err) {
@@ -18,6 +19,15 @@ fs.readFile("./db/fav.json", (err, data) => {
     return err;
   } else {
     fav = JSON.parse(data.toString());
+  }
+});
+
+fs.readFile("./db/current.json", (err, data) => {
+  if (err) {
+    console.log(err);
+    return err;
+  } else {
+    current = JSON.parse(data.toString());
   }
 });
 
@@ -51,8 +61,8 @@ const sign = (req, res) => {
 };
 
 const addToFav = (req, res) => {
-  const { id, catg } = req.body;
-  fav.push({ id, catg });
+  const { itemObj } = req.body;
+  fav.push({ itemObj });
   fs.writeFile("./db/fav.json", JSON.stringify(fav), (err) => {
     if (err) {
       res.status(400).json("bad request");
@@ -66,9 +76,40 @@ const getFav = (req, res) => {
   res.status(200).json(fav);
 };
 
+const deleteFav = (req, res) => {
+  const { itemObj } = req.body;
+  fav = fav.filter((item) => item.itemObj.trackId != itemObj.trackId);
+  fs.writeFile("./db/fav.json", JSON.stringify(fav), (err) => {
+    if (err) {
+      res.status(400).json("bad request");
+    } else {
+      res.status(200).json(fav);
+    }
+  });
+};
+
+const addToCurrent = (req, res) => {
+  const { result } = req.body;
+  current = { result };
+  fs.writeFile("./db/current.json", JSON.stringify(current), (err) => {
+    if (err) {
+      res.status(400).json("bad request");
+    } else {
+      res.status(200).json(current);
+    }
+  });
+};
+
+const getCurrent = (req, res) => {
+  res.status(200).json(current.result);
+};
+
 module.exports = {
   login,
   sign,
   addToFav,
   getFav,
+  deleteFav,
+  addToCurrent,
+  getCurrent,
 };

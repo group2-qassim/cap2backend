@@ -22,9 +22,7 @@ const getAllPodcast = (req, res) => {
 };
 const getPodcastById = (req, res) => {
   const id = req.params.id;
-  const found = podcast.data.results.find(
-    (podcast) => podcast.collectionId == id
-  );
+  const found = podcast.data.results.find((podcast) => podcast.trackId == id);
 
   res.status(200).json(found);
 };

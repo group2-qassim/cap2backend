@@ -22,7 +22,7 @@ const getAllMusicVideo = (req, res) => {
 };
 const getMusicVideoById = (req, res) => {
   const id = req.params.id;
-  const found = musicVideo.data.results.find((item) => item.collectionId == id);
+  const found = musicVideo.data.results.find((item) => item.trackId == id);
 
   res.status(200).json(found);
 };

@@ -11,7 +11,6 @@ const movieRouter = require("./routers/routes/moviesRoute");
 const podcastRouter = require("./routers/routes/podcastRoute");
 const musicRouter = require("./routers/routes/musicRoute");
 const musicVideoRouter = require("./routers/routes/musicVideoRoute");
-const audiobookRouter = require("./routers/routes/audiobookRoute");
 const tvShowRouter = require("./routers/routes/tvShowRoute");
 const softwareRouter = require("./routers/routes/softwareRoute");
 const ebookRouter = require("./routers/routes/ebookRoute");
@@ -52,10 +51,6 @@ const musicVideoMiddleware = (req, res, next) => {
   console.log("musicVideo");
   next();
 };
-const audiobookMiddleware = (req, res, next) => {
-  console.log("audiobook");
-  next();
-};
 
 const tvShowMiddleware = (req, res, next) => {
   console.log("tvShow");
@@ -94,7 +89,6 @@ app.use("/movies", movieMiddleware, movieRouter);
 app.use("/podcast", podcastMiddleware, podcastRouter);
 app.use("/music", musicMiddleware, musicRouter);
 app.use("/musicVideo", musicVideoMiddleware, musicVideoRouter);
-app.use("/audiobook", audiobookMiddleware, audiobookRouter);
 app.use("/tvShow", tvShowMiddleware, tvShowRouter);
 app.use("/software", softwareMiddleware, softwareRouter);
 app.use("/ebook", ebookMiddleware, ebookRouter);

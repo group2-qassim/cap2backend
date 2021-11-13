@@ -22,7 +22,7 @@ const getAllTvShow = (req, res) => {
 };
 const getTvShowById = (req, res) => {
   const id = req.params.id;
-  const found = tvShow.data.results.find((item) => item.collectionId == id);
+  const found = tvShow.data.results.find((item) => item.trackId == id);
 
   res.status(200).json(found);
 };

@@ -46,7 +46,7 @@ const getAllMovies = (req, res) => {
 };
 const getMovieById = (req, res) => {
   const id = req.params.id;
-  const found = movies.data.results.find((movie) => movie.collectionId == id);
+  const found = movies.data.results.find((movie) => movie.trackId == id);
 
   res.status(200).json(found);
 };

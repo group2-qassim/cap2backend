@@ -8,6 +8,6 @@ const getSearchMiddleware = (req, res, next) => {
 
 const searchRouter = express.Router();
 
-searchRouter.get("/", getSearchMiddleware, getSearch);
+searchRouter.get("/:catg/:str", getSearchMiddleware, getSearch);
 
 module.exports = searchRouter;

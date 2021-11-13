@@ -1,18 +1,18 @@
 const express = require("express");
 const {
-  getAllPodcast,
-  getPodcastById,
-} = require("./../controllers/podcastController");
+  getAllSoftware,
+  getSoftwareById,
+} = require("./../controllers/softwareController");
 
 const getAllPodcastMiddleware = (req, res, next) => {
-  console.log("get All Movies");
+  console.log("get All software");
   next();
 };
 
-const podcastRouter = express.Router();
+const softwareRouter = express.Router();
 
-podcastRouter.get("/", getAllPodcastMiddleware, getAllPodcast);
+softwareRouter.get("/", getAllPodcastMiddleware, getAllSoftware);
 
-podcastRouter.get("/:id", getPodcastById);
+softwareRouter.get("/:id", getSoftwareById);
 
-module.exports = podcastRouter;
+module.exports = softwareRouter;
