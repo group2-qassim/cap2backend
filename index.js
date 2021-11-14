@@ -5,7 +5,7 @@ const cors = require("cors");
 const helmet = require("helmet");
 
 dotenv.config();
-process.env["NODE_TLS_REJECT_UNAUTHORIZED"] = 0;
+//process.env["NODE_TLS_REJECT_UNAUTHORIZED"] = 0;
 
 // router
 const movieRouter = require("./routers/routes/moviesRoute");
