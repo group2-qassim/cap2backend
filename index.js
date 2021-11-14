@@ -2,7 +2,7 @@ const express = require("express");
 const morgan = require("morgan");
 const dotenv = require("dotenv");
 const cors = require("cors");
-const helmet = require("helmet");
+//const helmet = require("helmet");
 
 dotenv.config();
 //process.env["NODE_TLS_REJECT_UNAUTHORIZED"] = 0;
@@ -29,7 +29,7 @@ const appMiddleware = (req, res, next) => {
 };
 app.use(appMiddleware);
 app.use(cors());
-app.use(helmet());
+//app.use(helmet());
 app.use(morgan("dev"));
 
 // router level middleware
@@ -100,11 +100,15 @@ app.use("/search", searchMiddleware, searchRouter);
 const PORT = process.env.PORT;
 //process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0";
 
-if (process.env.NODE_ENV) {
-  app.use(express.static(path.resolve(process.cwd(), "client/build")));
-  app.get("*", (req, res) => {
-    res.sendFile(path.resolve(process.cwd(), "client/build/index.html"));
-  });
+// if (process.env.NODE_ENV) {
+//   app.use(express.static(path.resolve(process.cwd(), "client/build")));
+//   app.get("*", (req, res) => {
+//     res.sendFile(path.resolve(process.cwd(), "client/build/index.html"));
+//   });
+// }
+
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static(path.join(__dirname, "../client/build")));
 }
 
 app.listen(PORT, () => {
