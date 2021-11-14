@@ -5,6 +5,7 @@ const cors = require("cors");
 const helmet = require("helmet");
 
 dotenv.config();
+process.env["NODE_TLS_REJECT_UNAUTHORIZED"] = 0;
 
 // router
 const movieRouter = require("./routers/routes/moviesRoute");
@@ -97,7 +98,7 @@ app.use("/user", userMiddleware, userRouter);
 app.use("/search", searchMiddleware, searchRouter);
 
 const PORT = process.env.PORT || 4000;
-process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0";
+//process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0";
 
 app.listen(PORT, () => {
   console.log(`Server on ${PORT}`);
