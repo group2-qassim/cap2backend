@@ -97,7 +97,7 @@ app.use("/all", allMiddleware, allRouter);
 app.use("/user", userMiddleware, userRouter);
 app.use("/search", searchMiddleware, searchRouter);
 
-const PORT = process.env.PORT || 4000;
+const PORT = process.env.PORT;
 //process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0";
 
 app.listen(PORT, () => {
